@@ -14,9 +14,12 @@
  * limitations under the License.
  */
 
-package org.gradle.api.internal.artifacts.ivyservice.ivyresolve.strategy;
+package org.gradle.api.internal.artifacts.transform;
 
-public interface LockingAwareSelector {
+import org.gradle.api.internal.artifacts.ivyservice.resolveengine.artifact.ResolvedArtifactSet;
 
-    VersionSelector forLocking();
+import java.util.Collection;
+
+public interface TransformNodeFactory {
+    Collection<TransformNode> getOrCreate(ResolvedArtifactSet artifactSet, ArtifactTransformer transformer);
 }

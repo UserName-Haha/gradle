@@ -14,12 +14,24 @@
  * limitations under the License.
  */
 
-package org.gradle.execution.taskgraph;
+package org.gradle.execution.plan;
 
-import org.gradle.api.internal.tasks.WorkDependencyResolver;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Resolves dependencies to {@link WorkInfo} objects.
- */
-public interface WorkInfoDependencyResolver extends WorkDependencyResolver<WorkInfo> {
+public class FailureCollector {
+
+    private final List<Throwable> failures = new ArrayList<Throwable>();
+
+    public void addFailure(Throwable throwable) {
+        failures.add(throwable);
+    }
+
+    public List<Throwable> getFailures() {
+        return failures;
+    }
+
+    public void clearFailures() {
+        failures.clear();
+    }
 }

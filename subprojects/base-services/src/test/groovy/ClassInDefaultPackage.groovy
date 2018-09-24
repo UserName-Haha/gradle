@@ -14,8 +14,5 @@
  * limitations under the License.
  */
 
-package org.gradle.execution.taskgraph;
-
-public interface WorkInfoExecutor {
-    boolean execute(WorkInfo work);
+class ClassInDefaultPackage {
 }
