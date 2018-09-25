@@ -132,7 +132,7 @@ class BuildScanPluginPerformanceTest extends Specification {
         println "\nspeed statistics ${with.name}: "
         println with.getSpeedStats()
 
-        // cannot be more than 1s slower
+        // cannot be more than 1s slower (TODO probably convert that into a percentage value)
         with.totalTime.average - without.totalTime.average < millis(1000)
 
         where:
@@ -140,7 +140,6 @@ class BuildScanPluginPerformanceTest extends Specification {
         "help"                             | ['help']              | false       | []                | null
         "clean build"                      | ['clean', 'build']    | true        | []                | null
         "upToDate assemble"                | ['assemble']          | false       | []                | null
-        "clean assemble"                   | ['clean', 'assemble'] | false       | []                | null
         "clean assemble from build cache"  | ['clean', 'assemble'] | false       | ['--build-cache'] | buildCacheSetup()
         "clean assemble empty build cache" | ['clean', 'assemble'] | false       | ['--build-cache'] | cleanBuildCacheSetup()
     }
